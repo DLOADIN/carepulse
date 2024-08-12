@@ -7,7 +7,8 @@ import { z } from "zod";
 import CustomFormField from "../ui/CustomFormField";
 import SubmitButton from "../ui/submitButton";
 import { UserFormValidation } from "@/lib/validation";
-
+import { useRouter } from 'next/navigation'; 
+import { createUser } from "@/lib/actions/patient.action";
 
 export enum FormFieldType {
   INPUT = "input",
@@ -20,6 +21,7 @@ export enum FormFieldType {
 }
 
 const PatientForm = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
@@ -31,15 +33,18 @@ const PatientForm = () => {
     },
   });
 
-  async function onSubmit({ name, email, phone }: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(data: z.infer<typeof UserFormValidation>) {
     setIsLoading(true);
     try {
-      // Simulate API call
-      // const UserData = { name, email, phone };
-      // const user = await createUser(UserData);
-      // if (user) router.push(`/patients/${user.id}/register`);
+      const user = await createUser(data);
+
+      if (user) {
+        router.push(`/patients/${user.$id}/register`);
+      }
     } catch (error) {
-      console.log(error);
+      console.error(error); // Improved error handling
+    } finally {
+      setIsLoading(false); // Ensure loading state is reset
     }
   }
 
@@ -77,6 +82,7 @@ const PatientForm = () => {
           placeholder="(+250)"
           iconSrc="/assets/icons/phone.svg"
         />
+
         <SubmitButton isLoading={isLoading}>GET STARTED</SubmitButton>
       </form>
     </FormProvider>
