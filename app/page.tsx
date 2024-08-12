@@ -2,6 +2,7 @@ import PatientForm from "@/components/forms/PatientForm";
 import Link from "next/link";
 import Image from "next/image";
 
+
 export default function Home() {
   return (
     <div className="flex h-screen max-h-screen">
