@@ -11,9 +11,11 @@ import { FormFieldType } from "./PatientForm";
 import { useRouter } from 'next/navigation'; 
 import { createUser } from "@/lib/actions/patient.action";
 import { FormControl } from "../ui/form";
-import { GenderOptions } from "@/constants/index";
+import { Doctors, GenderOptions } from "@/constants/index";
 import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import { Label } from "@radix-ui/react-label";
+import Image from "next/image";
+import { SelectItem } from "@/components/ui/select"
 
 
 const RegisterForm = ({ user }: { user: User}) => {
@@ -119,9 +121,71 @@ const RegisterForm = ({ user }: { user: User}) => {
             )}
             iconSrc="/assets/icons/phone.svg"
           />
+
         </div>
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name="address"
+          label="Address"
+          placeholder="KK 124 K Street"
+        />
+
+        <CustomFormField
+          fieldType={FormFieldType.INPUT}
+          control={form.control}
+          name="occupation"
+          label="Occupation"
+          placeholder="Software Engineer"
+        />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="emergencyContactName"
+              label="Emergency Contact Name"
+              placeholder="Parent's Name"
+            />
+
+            <CustomFormField
+              fieldType={FormFieldType.PHONE_INPUT}
+              control={form.control}
+              name="emergencyContactNumber"
+              label="Emergency Contact Number"
+              placeholder="(+250)"
+              iconSrc="/assets/icons/phone.svg"
+            />
+        </div>
+
+        <section className="space-y-6">
+          <div className="mb-9 space-y-1">
+            <h2 className="sub-header">Medical Information</h2>
+          </div>
+        </section>
+          <CustomFormField
+              fieldType={FormFieldType.SELECT}
+              control={form.control}
+              name="primaryPhysician"
+              label="Primary Physician"
+              placeholder="Select a physician"
+              iconSrc="/assets/icons/phone.svg"
+            >
+            { Doctors.map( (doctor) =>(
+              <SelectItem key={doctor.name} value={doctor.name}>
+                 <div className="flex cursor-pointer items-center gap-2">
+                    <Image 
+                    src={doctor.image}
+                    width={32}
+                    height={32}
+                    alt={doctor.name}
+                    className="rounded-full border border-dark-300"/>
+                  </div>
+              </SelectItem>
+            ))}
+          </CustomFormField>
+        
         <div className="flex flex-col gap-6 xl:flex-row"></div>
 
         <SubmitButton isLoading={isLoading}>GET STARTED</SubmitButton>
