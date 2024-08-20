@@ -48,6 +48,10 @@
     @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
   }
 
+  .placeholder\:text-dark-600::placeholder {
+    color: #333; 
+  }
+
   .left-sidebar {
     @apply hidden lg:flex;
   }
@@ -112,7 +116,8 @@
 
   /* ==== FORM */
   .radio-group {
-    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
+      @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed bg-dark-400 p-3;
+      border-color: #4A4A4A; 
   }
 
   .checkbox-label {
@@ -223,8 +228,8 @@
   }
 
   .shad-textArea {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
-  }
+    @apply bg-dark-400 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+  }  
 
   .shad-combobox-item {
     @apply data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 !important;
@@ -235,8 +240,9 @@
   }
 
   .shad-select-trigger {
-    @apply bg-dark-400  placeholder:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
+    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
   }
+  
 
   .shad-select-content {
     @apply bg-dark-400 border-dark-500 !important;

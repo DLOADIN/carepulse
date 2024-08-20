@@ -9,7 +9,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { Control } from "react-hook-form"
+import { Control, Form } from "react-hook-form"
 import { FormFieldType } from "../forms/PatientForm";
 import Image from "next/image";
 import 'react-phone-number-input/style.css'
@@ -20,6 +20,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { Select, SelectTrigger } from "./select";
 import { SelectValue } from "./select";
 import { SelectContent } from "./select";
+import { Textarea } from "./textarea";
 
 interface CustomProps{
   control: Control<any>;
@@ -61,6 +62,12 @@ const RenderField = ({field, props}: { field: any; props: CustomProps}) =>{
         </div>
       )
     
+    case FormFieldType.TEXTAREA:
+      return(
+        <FormControl>
+          <Textarea placeholder={placeholder} {...field } className="shad-textArea" disabled={props.disabled}/> 
+        </FormControl>
+      )
     
     case FormFieldType.PHONE_INPUT: 
       return(

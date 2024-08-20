@@ -96,7 +96,6 @@ const RegisterForm = ({ user }: { user: User}) => {
             control={form.control}
             name="birthDay"
             label="Day of Birth"
-            iconSrc="/assets/icons/email.svg"
           />
 
           <CustomFormField
@@ -186,7 +185,81 @@ const RegisterForm = ({ user }: { user: User}) => {
             ))}
           </CustomFormField>
         
-        <div className="flex flex-col gap-6 xl:flex-row"></div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="InsuranceProvider"
+              label="Insurance Provider"
+              placeholder="RSSB, MMI, RADIANT, RAMA, ect"
+            />
+
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="InsurancePolicyNumber"
+              label="Insurance Policy Number"
+              placeholder="ABX-129377236848-TNT "
+            />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="InsuranceProvider"
+              label="Insurance Provider"
+              placeholder="RSSB, MMI, RADIANT, RAMA, ect"
+            />
+
+            <CustomFormField
+              fieldType={FormFieldType.INPUT}
+              control={form.control}
+              name="InsurancePolicyNumber"
+              label="Insurance Policy Number"
+              placeholder="ABX-129377236848-TNT "
+            />
+        </div>
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name="alergies"
+              label="alergies (if any)"
+              placeholder="Peanuts, dogs, cats, others"
+            />
+
+        <CustomFormField
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name="currentMedication"
+              label="Current medications"
+              placeholder="Ibuprofen 200mg, Levothyroxine 50mcg"
+            />
+        </div>
+
+        <div className="flex flex-col gap-6 xl:flex-row">
+        <CustomFormField
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name="familyMedicalHistory"
+              label="family Medical History"
+              placeholder="Mother had diabetes II, Father had none"
+            />
+
+        <CustomFormField
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name="pastMedicalHistory"
+              label="Past medical history"
+              placeholder="Appendectomy in 2015, Asthma diagnosis in childhood"
+            />
+        </div>
+
+        <section className="space-y-6">
+            <div className="mb-9 space-y-1">
+              <h2 className="sub-header">Identification</h2>
+            </div>
+        </section>
 
         <SubmitButton isLoading={isLoading}>GET STARTED</SubmitButton>
       </form>
