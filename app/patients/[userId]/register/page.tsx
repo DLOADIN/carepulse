@@ -2,7 +2,8 @@
 
 import React from "react";
 import Image from 'next/image'
-import { getUser } from '@/lib/actions/patient.action';
+import { getUser } from '@/lib/actions/patient.action' ;
+import Link from "next/link";
 import RegisterForm from "@/components/forms/RegisterForm";
 
 const Register = async({params: {userId} }: SearchParamProps) => {
@@ -10,8 +11,8 @@ const Register = async({params: {userId} }: SearchParamProps) => {
 
   return (
     <div className="flex h-screen max-h-screen">
-      <section className="remove-scrollbar container">
-        <div className="sub-container max-w-[900px] flex-1 flex-col py-10">
+    <section className="remove-scrollbar container">
+        <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
           <Image
           src="/assets/icons/logo-full.svg"
           height={1000}
@@ -21,8 +22,7 @@ const Register = async({params: {userId} }: SearchParamProps) => {
           />
           
           <RegisterForm user={user}/>
-          
-          <p className="copyright text-14-regular py-12 text-green-500">© 2024 Carepulse</p>
+          <p className="copyright text-14-regular py-12">© 2024 Carepulse</p>
         </div>
     </section>
       <Image 
@@ -37,5 +37,4 @@ const Register = async({params: {userId} }: SearchParamProps) => {
 }
 
 export default Register
-
 
