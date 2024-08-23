@@ -131,18 +131,21 @@ const RegisterForm = ({ user }: { user: User }) => {
             label="Gender"
             renderSkeleton={(field)=>(
               <FormControl>
-                <RadioGroup className="flex h-11 gap-6 xl:justify-between" onChange={field.onChange} defaultValue={field.value}>
-                    {GenderOptions.map((option) =>
-                      <div key={option} className="radio-group">
-                          <RadioGroupItem value={option} id={option}>
-                            <Label htmlFor={option} className="cursor-pointer ">
-                              { option }
-                            </Label>
-                          </RadioGroupItem>
-                      </div>
-                    )}
-                </RadioGroup>
-              </FormControl>
+              <RadioGroup
+                className="flex h-11 gap-6 xl:justify-between"
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
+                {GenderOptions.map((option, i) => (
+                  <div key={option + i} className="radio-group">
+                    <RadioGroupItem value={option} id={option} />
+                    <Label htmlFor={option} className="cursor-pointer">
+                      {option}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </FormControl>
             )}
             iconSrc="/assets/icons/phone.svg"
           />
@@ -189,27 +192,32 @@ const RegisterForm = ({ user }: { user: User }) => {
             <h2 className="sub-header">Medical Information</h2>
           </div>
         </section>
-          <CustomFormField
-              fieldType={FormFieldType.SELECT}
-              control={form.control}
-              name="primaryPhysician"
-              label="Primary Physician"
-              placeholder="Select a physician"
-              iconSrc="/assets/icons/phone.svg"
-            >
-            { Doctors.map( (doctor) =>(
-              <SelectItem key={doctor.name} value={doctor.name}>
-                 <div className="flex cursor-pointer items-center gap-2">
-                    <Image 
-                    src={doctor.image}
-                    width={32}
-                    height={32}
-                    alt={doctor.name}
-                    className="rounded-full border border-dark-300"/>
-                  </div>
-              </SelectItem>
-            ))}
-          </CustomFormField>
+        
+
+  <CustomFormField
+    fieldType={FormFieldType.SELECT}
+    control={form.control}
+    name="primaryPhysician"
+    label="Primary Physician"
+    placeholder="Select a physician"
+    iconSrc="/assets/icons/phone.svg"
+  >
+    {Doctors.map((doctor, i) => (
+      <SelectItem key={doctor.name + i} value={doctor.name}>
+        <div className="flex cursor-pointer items-center gap-2">
+          <Image
+            src={doctor.image}
+            width={32}
+            height={32}
+            alt={doctor.name}
+            className="rounded-full border border-dark-500"
+          />
+          <p>{doctor.name}</p>
+        </div>
+      </SelectItem>
+    ))}
+  </CustomFormField>
+
         
         <div className="flex flex-col gap-6 xl:flex-row">
         <CustomFormField
@@ -291,7 +299,7 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="IdenticationType"
               label="Identification Type"
-              placeholder="Select a physician"
+              placeholder="Select an Identification Type"
               iconSrc="/assets/icons/phone.svg"
             >
             { IdenticationTypes.map( (type) =>(

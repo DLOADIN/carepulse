@@ -19,12 +19,43 @@ const config = {
     },
     extend: {
       colors: {
+        border: "hsl(var(--border))",
         'dark-400': '#4a4a4a',
-        'dark-500': '#333', // Ensure dark-500 is defined
-        'dark-600': '#222', // Define dark-600 for placeholder color
-      },
-      placeholderColor: {
-        'dark-600': '#222', // Add custom placeholder color
+        'dark-500': '#2e2e2e',
+        'dark-600': '#1a1a1a',
+        'dark-700': '#0a0a0a', // Add this color
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

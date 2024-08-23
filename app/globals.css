@@ -40,6 +40,18 @@
     /* background: #1e2238; */
     background: transparent;
   }
+
+  .checkbox-label {
+    @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
+  }
+
+  .copyright {
+    @apply text-14-regular justify-items-end text-center text-dark-600 xl:text-left;
+  }
+
+  .file-upload {
+    @apply text-12-regular flex cursor-pointer flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-5;
+  }
 }
 
 @layer utilities {
@@ -118,10 +130,6 @@
   .radio-group {
       @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed bg-dark-400 p-3;
       border-color: #4A4A4A; 
-  }
-
-  .checkbox-label {
-    @apply cursor-pointer text-sm font-medium text-dark-700 peer-disabled:cursor-not-allowed peer-disabled:opacity-70 md:leading-none;
   }
 
   /* ==== File Upload */
