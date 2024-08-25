@@ -194,16 +194,16 @@ const RegisterForm = ({ user }: { user: User }) => {
         </section>
         
 
-  <CustomFormField
+        <CustomFormField
     fieldType={FormFieldType.SELECT}
     control={form.control}
     name="primaryPhysician"
-    label="Primary Physician"
-    placeholder="Select a physician"
+    label="Doctor"
+    placeholder="Select a doctor"
     iconSrc="/assets/icons/phone.svg"
   >
-    {Doctors.map((doctor, i) => (
-      <SelectItem key={doctor.name + i} value={doctor.name}>
+    {Doctors.map((doctor) => (
+      <SelectItem key={doctor.name} value={doctor.name}>
         <div className="flex cursor-pointer items-center gap-2">
           <Image
             src={doctor.image}

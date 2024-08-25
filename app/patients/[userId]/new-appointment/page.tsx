@@ -1,8 +1,10 @@
-import PatientForm from "@/components/forms/AppointmentForm";
+import AppointmentForm from "@/components/forms/AppointmentForm";
 import Image from "next/image";
+import { getPatient } from "@/lib/actions/patient.action";
 
 
-export default function NewAppointment() {
+export default  async function NewAppointment( {params: {userId}}: SearchParamProps ) {
+  const patient = await getPatient(userId)
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container my-auto">
@@ -15,8 +17,12 @@ export default function NewAppointment() {
             className="mb-12 h-10 w-fit"
             />
             
-            {/* <AppointmentForm /> */}
-              <p className="justify-items-end text-green-500 xl:text-left">© 2024 Carepulse</p>
+            <AppointmentForm 
+            type="create" 
+            userId={userId}
+            patientId={patient.$id}/>
+              
+            <p className="copyright mt-5 py-10 text-green-500 xl:text-left">© 2024 Carepulse</p>
           </div>
       </section>
         <Image 
