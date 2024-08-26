@@ -24,7 +24,9 @@ import { useRouter } from 'next/router';
 
 const PassKeyModal = () => {
   const router = useRouter;
-  const [open, setOpen] = useState(false);
+  const [ open, setOpen ] = useState(true);
+  const [ passkey,setPasskey ] = useState('');
+  const [ error,setError ]  = useState('');
 
 const closeModal = () =>{
   setOpen(false)
@@ -52,7 +54,7 @@ const closeModal = () =>{
     </AlertDialogHeader>
 
     <div>
-      <InputOTP maxLength={6} value={passKey} onChange={(value) => setPasskey(value)}>
+      <InputOTP maxLength={6} value={passkey} onChange={(value) => setPasskey(value)}>
         <InputOTPGroup className="shad-otp">
           <InputOTPSlot className="shad-otp-slot" index={0} />
           <InputOTPSlot className="shad-otp-slot" index={1} />
@@ -63,6 +65,10 @@ const closeModal = () =>{
         </InputOTPGroup>
       </InputOTP>
 
+      {error && 
+        <p className="shad-error text-14-regular mt-4 flex justify-normal">
+          {error}    
+        </p>}
     </div>
 
     <AlertDialogFooter>
