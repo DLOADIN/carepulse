@@ -1,9 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image'
-import Statcard from '@/components/ui/Statcard';
+import Image from 'next/image';
+import Statcard from '@/components/ui/StatCard';
+import { getRecentAppointments } from '@/lib/actions/appointment.action';
+import DataTable  from '@/components/Datatable'; 
+import {columns, Payment} from '@/components/table/Column'
 
-const Admin = () => {
+
+async function getData(): Promise<Payment[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    // ...
+  ]
+}
+
+const Admin = async () => {
+  const data = await getData()
+
+  const appointments = await getRecentAppointments()
   return (
     <div className="mx-auto flex max-w-7xl flex-col space-y-14">
       <header className="admin-header">
@@ -30,26 +50,28 @@ const Admin = () => {
           
           <Statcard 
           type="appointments"
-          count={5}
+          count={appointments.scheduledCount}
           label="Scheduled Appointments"
           icon="/assets/icons/appointments.svg"
           />
 
           <Statcard 
           type="pending"
-          count={10}
+          count={appointments.pendingCount}
           label="Pending Appointments"
           icon="/assets/icons/pending.svg"
           />
 
           <Statcard 
           type="cancelled"
-          count={5}
+          count={appointments.cancelledCount}
           label="Cancelled Appointments"
           icon="/assets/icons/cancelled.svg"
           />
 
         </section>
+        {/* <DataTable columns={columns} data={appointments.documents} /> */}
+        <DataTable columns={columns} data={data} />
       </main>
     </div>
   )

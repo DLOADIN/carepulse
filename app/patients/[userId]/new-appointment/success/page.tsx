@@ -3,7 +3,7 @@ import Link  from 'next/link';
 import  Image from 'next/image';
 import { getAppointment } from '@/lib/actions/appointment.action';
 import { Doctors } from '@/constants';
-import {formatDateTime} from "@/lib/utils"
+import { formatDateTime } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
 const Success = async ( { params: {userId}, searchParams }: SearchParamProps) => {
@@ -67,9 +67,8 @@ const Success = async ( { params: {userId}, searchParams }: SearchParamProps) =>
             </Link>
         </Button>
 
-        <p>
         <p className="copyright text-center">© 2024 Carepulse</p>
-        </p>
+        
       </div>
     </div>
   )
