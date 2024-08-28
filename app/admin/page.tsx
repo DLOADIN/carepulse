@@ -6,22 +6,8 @@ import { getRecentAppointments } from '@/lib/actions/appointment.action';
 import DataTable  from '@/components/Datatable'; 
 import {columns, Payment} from '@/components/table/Column'
 
-
-async function getData(): Promise<Payment[]> {
-  // Fetch data from your API here.
-  return [
-    {
-      id: "728ed52f",
-      amount: 100,
-      status: "pending",
-      email: "m@example.com",
-    },
-    // ...
-  ]
-}
-
 const Admin = async () => {
-  const data = await getData()
+  
 
   const appointments = await getRecentAppointments()
   return (
@@ -70,8 +56,7 @@ const Admin = async () => {
           />
 
         </section>
-        {/* <DataTable columns={columns} data={appointments.documents} /> */}
-        <DataTable columns={columns} data={data} />
+        <DataTable columns={columns} data={appointments.documents} />
       </main>
     </div>
   )
