@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Statcard from '@/components/ui/StatCard';
 import { getRecentAppointments } from '@/lib/actions/appointment.action';
 import DataTable  from '@/components/Datatable'; 
-import {columns, Payment} from '@/components/table/Column'
+import {columns} from '@/components/table/Column'
 
 const Admin = async () => {
   
