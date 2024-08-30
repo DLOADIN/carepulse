@@ -8,12 +8,15 @@ import {
   ENDPOINT,
   PROJECT_ID,
   databases,
+  messaging,
   storage,
   users,
 } from "../appwrite.config";
 import { parseStringify } from "../utils";
 import { Appointment } from "@/types/appwrite.types";
 import { revalidatePath } from "next/cache";
+import { string } from "zod";
+import { formatDateTime } from "@/lib/utils";
 
 export const createAppointment = async(appointment: CreateAppointmentParams) =>{
   try{
@@ -106,10 +109,36 @@ export const updateAppointment = async ( { appointmentId, userId, appointment, t
         throw new Error('Appointment not found')
       }
 
+      const smsMessage = `Hi, it's Carepulse. Your appointment has been 
+      ${type === 'schedule' ? `Your appointment has been scheduled for 
+      ${formatDateTime(appointment.schedule!.dateTime)} with Dr.${appointment.primaryPhysician}`:
+      `We regret to inform your appointment has been cancelled due to the following
+      Reason: ${appointment.cancellation}`
+    }`;
+
+      
+      await sendSMSNotification(userId,smsMessage);
+
       revalidatePath('/admin');
       return parseStringify(updateAppointment)
     }
     catch(error){
       console.log(error);
     }
+}
+
+export const sendSMSNotification = async ( userId:string, content:string) => {
+  try{
+    const message = await messaging.createSms(
+      ID.unique(),
+      content,
+      [],
+      [userId]
+    )
+
+    return parseStringify(message)
+  }
+  catch(error){
+    console.log(error)
+  }
 }
