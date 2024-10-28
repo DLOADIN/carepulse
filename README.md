@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
@@ -40,5 +39,75 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 #ADMIN PASSKEY
 123456
->>>>>>> origin/main
+
+
+# CarePulse
+
+CarePulse is a web application designed to help medical institutions manage patient appointments, facilitate physician selection, and provide additional functionalities essential for modern healthcare management.
+
+## Table of Contents
+
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Documentation](#api-documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Features
+
+- Patient appointment management
+- Physician selection and scheduling
+- User-friendly interface for patients and staff
+- Notification system for reminders
+- Responsive design for mobile and desktop
+
+## Technologies Used
+
+- TypeScript
+- Next.js 14
+- Appwrite (backend management service)
+- Tailwind
+
+## Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/DLOADIN/carepulse.git
+Navigate to the project directory:
+cd carepulse
+Install the dependencies:
+
+Set up your Appwrite instance and configure your environment variables. Create a .env.local file with the required settings.
+
+Start the development server:
+
+npm run dev
+Usage
+Access the application through your web browser at http://localhost:3000.
+Register or log in as a user.
+Navigate the dashboard to manage appointments and select physicians:
+Book new appointments
+View existing appointments
+Choose from available physicians
+API Documentation
+CarePulse utilizes Appwrite for backend management. Key endpoints include:
+
+POST /appointments - Create a new appointment
+GET /appointments - Retrieve a list of appointments
+GET /appointments/{id} - Retrieve details of a specific appointment
+DELETE /appointments/{id} - Cancel a specific appointment
+GET /physicians - Retrieve a list of available physicians
+Contributing
+We welcome contributions to improve CarePulse! Here’s how to contribute:
+
+Fork the repository.
+Create a new branch:
+git checkout -b feature/YourFeature
+Make your changes and commit them:
+git commit -m "Add your message here"
+Push to the branch:
+git push origin feature/YourFeature
+Create a pull request.
 
